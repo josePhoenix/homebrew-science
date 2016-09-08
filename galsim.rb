@@ -15,10 +15,8 @@ class Galsim < Formula
   depends_on "boost-python"
   depends_on "tmv-cpp"
 
-  # FITS support should come from astropy.io.fits
-  # but don't complain if PyFITS is already installed
-  check_pyfits = system "python -c 'import pyfits' > /dev/null 2>&1"
-  depends_on "astropy" => :python if not check_pyfits
+  # FITS support should come from astropy.io.fits (PyFITS has been deprecated)
+  depends_on "astropy" => :python
   depends_on "numpy" => :python
   depends_on "nose" => :python if build.with? "check"
 
